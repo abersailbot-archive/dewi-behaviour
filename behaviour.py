@@ -1,6 +1,8 @@
 import math
 from boatd_client import Boat
 
+radiusOfEarth = 3963.1676 #this is the raduis of the earth in miles, approxamatly
+# number of miles per degree is (pi/180)*raduisOfEarth*math.cos("lattitude")
 numOfMilesInADegree = 60.0405
 
 # Very simple, downwind, "try to face right direction" program - working on XTE and tacking seperately
@@ -51,7 +53,7 @@ class Line(object): # a plane sailing line between two points. works out the bea
 		return self.distance
 
 class SimplePilot(object):
-	def __init__(self, waypointList, maxRudder, headingMargin, waypointError):
+	def __init__(self, waypointList, maxRudder, headingbMargin, waypointError):
 		self.waypoints = waypointList
 		self.maxRudder = maxRudder
 		self.headingMargin = headingMargin
@@ -83,7 +85,7 @@ class SimplePilot(object):
 				
 		boat.sail(newSailAngle)
 	
-	def compareDirections(self, a, b): # returns difference (-180 to +180) between two directions.
+	def compareDirections(self, a, b): # returns difference (-180 to +180) between two directiobns.
 		difference = b - a
 		if abs(difference) > 180:
 			if difference < 0:
